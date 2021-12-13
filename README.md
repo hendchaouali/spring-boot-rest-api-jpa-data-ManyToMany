@@ -38,7 +38,7 @@ Un client lance une requête HTTP, et le serveur renvoie une réponse à travers
 * Spring Boot 2.5.7 (avec Spring Web MVC et Spring Data JPA)
 * PostgreSQL
 * H2 Database
-* Lombok
+* Lombok 1.18.22
 * Maven 4.0.0
 
 
