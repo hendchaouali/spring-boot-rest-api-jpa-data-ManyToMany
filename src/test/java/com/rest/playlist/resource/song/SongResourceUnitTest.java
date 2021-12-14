@@ -1,9 +1,9 @@
 package com.rest.playlist.resource.song;
 
 import com.rest.playlist.enums.SongCategory;
-import com.rest.playlist.exception.ResourceNotFoundException;
+import com.rest.playlist.web.exception.ResourceNotFoundException;
 import com.rest.playlist.model.Song;
-import com.rest.playlist.resource.SongResource;
+import com.rest.playlist.web.resource.SongResource;
 import com.rest.playlist.service.ISongService;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,12 +72,13 @@ public class SongResourceUnitTest {
     }
 
     @Test
-    public void testGetNoContentSongs() throws Exception {
+    public void testGetEmptyListSongs() throws Exception {
         when(songService.getAllSongs()).thenReturn(songList);
 
         mockMvc.perform(get("/api/songs")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNoContent());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(0)));
     }
 
     @Test
@@ -97,12 +98,13 @@ public class SongResourceUnitTest {
     }
 
     @Test
-    public void testGetNoContentSongsByCategory() throws Exception {
+    public void testGetEmptyListSongsByCategory() throws Exception {
         when(songService.getSongsByCategory("CLASSICAL")).thenReturn(songList);
 
         mockMvc.perform(get("/api/songs/category/CLASSICAL")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNoContent());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(0)));
     }
 
 
@@ -133,12 +135,13 @@ public class SongResourceUnitTest {
     }
 
     @Test
-    public void testGetNoContentSongsByArtistName() throws Exception {
+    public void testGetEmptyListSongsByArtistName() throws Exception {
         when(songService.getSongsByArtistName("Isak")).thenReturn(songList);
 
         mockMvc.perform(get("/api/songs/artist/Isak")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNoContent());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(0)));
     }
 
     @Test

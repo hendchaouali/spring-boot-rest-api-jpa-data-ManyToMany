@@ -1,16 +1,14 @@
 package com.rest.playlist.service.playlist;
 
 import com.rest.playlist.enums.SongCategory;
-import com.rest.playlist.exception.ResourceNotFoundException;
+import com.rest.playlist.web.exception.ResourceNotFoundException;
 import com.rest.playlist.model.Playlist;
 import com.rest.playlist.model.Song;
 import com.rest.playlist.repository.PlaylistRepository;
-import com.rest.playlist.repository.SongRepository;
 import com.rest.playlist.service.ISongService;
 import com.rest.playlist.service.PlaylistServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,10 +1,10 @@
 package com.rest.playlist.resource.playlist;
 
 import com.rest.playlist.enums.SongCategory;
-import com.rest.playlist.exception.ResourceNotFoundException;
+import com.rest.playlist.web.exception.ResourceNotFoundException;
 import com.rest.playlist.model.Playlist;
 import com.rest.playlist.model.Song;
-import com.rest.playlist.resource.PlaylistResource;
+import com.rest.playlist.web.resource.PlaylistResource;
 import com.rest.playlist.service.IPlaylistService;
 import com.rest.playlist.service.ISongService;
 import org.junit.Before;
@@ -90,12 +90,13 @@ public class PlaylistResourceUnitTest {
     }
 
     @Test
-    public void testGetNoContentPlaylists() throws Exception {
+    public void testGetEmptyListPlaylists() throws Exception {
         when(playlistService.getAllPlaylists()).thenReturn(playlistList);
 
         mockMvc.perform(get("/api/playlists")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNoContent());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(0)));
     }
 
     @Test
@@ -112,12 +113,13 @@ public class PlaylistResourceUnitTest {
     }
 
     @Test
-    public void testGetNoContentPlaylistsByTitle() throws Exception {
+    public void testGetEmptyListPlaylistsByTitle() throws Exception {
         when(playlistService.getPlaylistsByTitle("No Title")).thenReturn(playlistList);
 
         mockMvc.perform(get("/api/playlists/title/No Title")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNoContent());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(0)));
     }
 
    @Test

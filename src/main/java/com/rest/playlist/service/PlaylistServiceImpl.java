@@ -1,10 +1,9 @@
 package com.rest.playlist.service;
 
-import com.rest.playlist.exception.ResourceNotFoundException;
+import com.rest.playlist.web.exception.ResourceNotFoundException;
 import com.rest.playlist.model.Playlist;
 import com.rest.playlist.model.Song;
 import com.rest.playlist.repository.PlaylistRepository;
-import com.rest.playlist.repository.SongRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

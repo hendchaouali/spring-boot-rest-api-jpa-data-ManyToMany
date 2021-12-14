@@ -1,10 +1,10 @@
 package com.rest.playlist.resource.song;
 
 import com.rest.playlist.enums.SongCategory;
-import com.rest.playlist.exception.ServiceExceptionHandler;
+import com.rest.playlist.web.exception.ServiceExceptionHandler;
 import com.rest.playlist.model.Song;
 import com.rest.playlist.repository.SongRepository;
-import com.rest.playlist.resource.SongResource;
+import com.rest.playlist.web.resource.SongResource;
 import com.rest.playlist.service.ISongService;
 import org.junit.Before;
 import org.junit.Test;

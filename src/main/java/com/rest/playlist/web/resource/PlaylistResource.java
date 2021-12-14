@@ -1,4 +1,4 @@
-package com.rest.playlist.resource;
+package com.rest.playlist.web.resource;
 
 import com.rest.playlist.model.Playlist;
 import com.rest.playlist.service.IPlaylistService;
@@ -25,21 +25,13 @@ public class PlaylistResource {
 
     @GetMapping
     public ResponseEntity<List<Playlist>> getAllPlaylists() {
-
         List<Playlist> playlists = IPlaylistService.getAllPlaylists();
-
-        if (playlists.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
         return new ResponseEntity<>(playlists, HttpStatus.OK);
     }
 
     @GetMapping("/title/{title}")
     public ResponseEntity<List<Playlist>> getPlaylistsByTitle(@PathVariable String title) {
         List<Playlist> playlists = IPlaylistService.getPlaylistsByTitle(title);
-        if (playlists.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
         return new ResponseEntity<>(playlists, HttpStatus.OK);
     }
 
