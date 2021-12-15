@@ -30,7 +30,7 @@ public class Playlist extends AbstractAuditModel {
     private String description;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "song_playlist",
+    @JoinTable(name = "songs_playlist",
             joinColumns = {@JoinColumn(name = "playlist_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "song_id", referencedColumnName = "id")})
     private List<Song> songs;
